@@ -9,3 +9,4 @@ by Kenneth Chin and Manfred Tan
 ### Methods
 
 ### Remarks on the *UserOfList* class
+- instantiates a new arraylist
