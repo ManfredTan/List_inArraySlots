@@ -1,14 +1,11 @@
-# insert_project_title
+# List_inArraySlots
 by Kenneth Chin and Manfred Tan 
 
-List_inArraySlots.java
 
-hw4D_16
+### Fields
 
-### fields
+### Constructors
 
-### constructors
+### Methods
 
-### methods
-
-### UserOfList_inArraySlots
+### Remarks on the *UserOfList* class
