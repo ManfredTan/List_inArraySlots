@@ -7,7 +7,7 @@ by Kenneth Chin and Manfred Tan
 # Constructors
 - List_inArraySlots()
 # Methods
-- List_inArraySlots()
+- list_inArraySlots()
 - toString()
 - add(int value)
 - expand()
