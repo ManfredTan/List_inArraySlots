@@ -1,8 +1,14 @@
-# implement a list by storing data in an encapsulated array
+### List_inArraySlots
+by Kenneth Chin and Manfred Tan
 
-List_inArraySlots stores integers with any value that datatype can hold.
-
-That implies that the implementation cannot identify the end of the list
-by the values of the integers stored in the list. That design decision
-would require reserving one integer value as a value that cannot be
-stored in the list.
+# Fields
+int[] fakeList
+int numOfElements
+# Constructors
+List_inArraySlots()
+# Methods
+toString()
+add(int value)
+expand()
+# Remarks on *UserOfList* class
+First it creates an empty list. Then it populates it with 5 elements, each being one less than its predecessor. Then it adds more elements to implement the expand() method. Finally, it runs it with 35 elements to make sure expand() works. 
