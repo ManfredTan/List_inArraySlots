@@ -22,20 +22,22 @@ public class UserOfList {
         System.out.println("--------");
 
         // Add enough elements that expansion is expected
-        // for( ; i < 15; i++ ) {
 
-            // if( i == 10) System.out.println( "expansion expected");
+        for( ; i < 15; i++ ) {
 
-            // list.add( -i);
-            // System.out.println( "number of elements: " + list.size() );
-        // }
-        // System.out.println("result of second population: " + list.size() + " elements:");
-        // System.out.println( list);
+            if( i == 10) System.out.println( "expansion expected");
+            // System.out.println(list);
+            list.add( -i);
+            System.out.println( "number of elements: " + list.size() );
+        }
+
+        System.out.println("result of second population: " + list.size() + " elements:");
+        System.out.println( list);
 
         // // Trust no one.
-        // for( ; i < 35; i++ )
-            // list.add( -i);
-        // System.out.println("after second expansion: " + list.size() + " elements:");
-        // System.out.println( list);
+        for( ; i < 35; i++ )
+            list.add( -i);
+        System.out.println("after second expansion: " + list.size() + " elements:");
+        System.out.println( list);
     }
 }
