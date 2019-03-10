@@ -1,20 +1,22 @@
 /**
   Implement a list of integer elements, including
   both data and operations.
+  Started with solutions from solutionsHolmes
  */
 
 public class List_inArraySlots {
 
-    // declare fields here
-	int[] fakeList;
-	int numOfElements;
+    private int[] elements;     // container for the elements of the list
+    private int filledElements; // the number of elements in this list
+
+    private static final int INITIAL_CAPACITY = 10;
 
     /**
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
-		fakeList = new int[5];
-        numOfElements = 0;
+        elements = new int[ INITIAL_CAPACITY];
+        // filledElements has been initialized to the desired value, 0
     }
 
 
@@ -22,8 +24,8 @@ public class List_inArraySlots {
       @return the number of elements in this list
      */
     public int size() {
-		return numOfElements;
-	}
+        return filledElements;
+    }
 
 
      /**
@@ -31,14 +33,11 @@ public class List_inArraySlots {
        in [a,b,c,] format
       */
     public String toString() {
-        String stringFormat = "[";
-        int index = 0;
-        while (index < fakeList.length) {
-            stringFormat += fakeList[index] + ",";
-            index++;
-        }
-        return( stringFormat + "]");
-	}
+        String result = "[";
+        for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+            result += elements[ elemIndex] + ",";
+        return result + "]";
+    }
 
 
     /**
@@ -47,41 +46,76 @@ public class List_inArraySlots {
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean add( int value) {
-         if (numOfElements >= fakeList.length){
-				  expand();
-				};
-         fakeList[numOfElements] = value;
-         numOfElements++;
-         return true;
-     }
+         // expand if necessary
+         if( filledElements == elements.length) expand();
+
+         elements[ filledElements] = value;
+         filledElements++;
+         // idiomatic version: elements[ filledElements++] = value;
+        return true;
+}
 
 
     /**
       Double the capacity of the List_inArraySlots,
-      preserving existing data
+      preserving existing data.
      */
      private void expand() {
         System.out.println( "expand... (for debugging)");
-						int[] newList = new int[2*numOfElements] ;
-						for (int i = 0; i < fakeList.length; i++){
-							int index = 0;
-							newList[i] = fakeList[i];
-
-
-
-						}
-
-					
-						fakeList = newList;
-
-						// for (int i:fakeList){
-						// 	System.out.println(i);
-						// }
-		           /* S.O.P. rules for debugging:
+           /* S.O.P. rules for debugging:
               Working methods should be silent. But during
               development, the programmer must verify that
               this method is called when that is appropriate.
               So test using the println(), then comment it out.
               */
+        int[] bigger = new int[ elements.length * 2];
+        for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+            bigger[ elemIndex] = elements[ elemIndex];
+        elements = bigger;
      }
+
+     // --------- end of "code that worked in v0" ---------
+
+     /**
+          accessor
+          @return element @index from this list
+          precondition: @index is within the bounds of the array.
+              (Having warned the user about this precondition,
+               you should NOT complicate your code to check
+               whether user violated the condition.)
+         */
+        public int get( int index ) {
+            return(elements[index]);
+        }
+
+
+        /**
+      Set value at @index to @newValue
+      @return old value at @index
+      @precondition: @index is within the bounds of this list.
+     */
+    public int set( int index, int newValue ) {
+        int oldIndex = elements[index];
+        elements[index] = newValue;
+        return oldIndex;
+    }
+
+
+    /**
+  Insert @value at position @index in this list.
+  Shift the element currently at that position (if any)
+  and any subsequent elements to the right
+  (that is, increase the index associated with each).
+ */
+    public void add( int index, int value) {
+        int[] finalArray = new int[elements.length + 1];
+        for (int currentIndex = 0; currentIndex < index; currentIndex++)
+            finalArray[currentIndex] = elements[currentIndex];
+        finalArray[index] = value;
+        for (int currentIndex = (index + 1); currentIndex < (finalArray.length); currentIndex++)
+            finalArray[currentIndex] = elements[currentIndex - 1];
+        elements = finalArray;
+        filledElements++;
+    }
+
 }
