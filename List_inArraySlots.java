@@ -118,4 +118,20 @@ public class List_inArraySlots {
         filledElements++;
     }
 
+
+    /**
+      Remove the element at position @index in this list.
+      Shift any subsequent elements to the left (that is,
+      decrease the index associated with each).
+      @return the value that was removed from the list
+     */
+     public int remove( int index) {
+       int[] finalArray = new int[elements.length - 1];
+       for (int currentIndex = 0; currentIndex < elements.length - 1; currentIndex ++)
+            if (elements[currentIndex] != index)
+                finalArray[currentIndex] = elements[currentIndex];
+      elements = finalArray;
+      return index;
+   }
+
 }
